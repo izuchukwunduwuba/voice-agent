@@ -1,0 +1,27 @@
+{
+  "name": "voice-agent-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "NODE_ENV=production node server.js",
+    "dev": "NODE_ENV=development nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "type": "module",
+  "license": "ISC",
+  "dependencies": {
+    "@elevenlabs/elevenlabs-js": "^2.36.0",
+    "@supabase/supabase-js": "^2.98.0",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "form-data": "^4.0.5",
+    "node-fetch": "^3.3.2",
+    "nodemon": "^3.1.14",
+    "openai": "^6.25.0",
+    "path": "^0.12.7",
+    "twilio": "^5.12.2",
+    "uuid": "^13.0.0"
+  }
+}
