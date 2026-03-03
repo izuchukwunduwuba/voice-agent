@@ -19,16 +19,12 @@ import {
   twilioRecordingAuthHeader,
 } from "../services/twilio.js";
 
-// const name = appointment.client_name || `Anita Cohman`;
+// const name = appointment.client_name;
 // const time =
 //   new Date(appointment.appointment_time).toLocaleTimeString("en-GB", {
 //     hour: "numeric",
 //     minute: "2-digit",
-//   }) ||
-//   Dat.now().toLocaleTimeString("en-GB", {
-//     hour: "numeric",
-//     minute: "2-digit",
-//   });
+//   })
 
 export const initiateCall = async (req, res) => {
   const twiml = new twilio.twiml.VoiceResponse();
@@ -47,7 +43,7 @@ export const initiateCall = async (req, res) => {
 
     await confirmCallSession({ callSid, from, to });
 
-    const greeting = "Hello, may i confirm if i am speaking to Jared";
+    const greeting = "Hello, may i confirm if i am speaking to Frank";
 
     await addMessage(callSid, "system", "Call started");
     await addMessage(callSid, "assistant", greeting);

@@ -201,11 +201,53 @@ The LLM returns structured JSON:
 
 ## Production Decisions
 
-- SDK-based OpenAI integration
-- Guarded JSON parsing
-- Deterministic lifecycle control
-- Explicit Twilio webhook validation
-- Hybrid rule + LLM design — no uncontrolled AI-driven hangups
+**SDK-based OpenAI integration**
+
+- Uses the official OpenAI SDK for STT and LLM calls to avoid malformed multipart uploads and reduce low-level HTTP errors.
+
+**Guarded JSON parsing**
+
+- All model outputs are structured as JSON and safely parsed with fallbacks to prevent malformed responses from breaking call flow.
+
+**Deterministic lifecycle control**
+
+- The backend, not the LLM, controls hangups, retries, and session state to ensure predictable behaviour.
+
+**Explicit Twilio webhook validation**
+
+- Webhook payloads are validated (CallSid, RecordingUrl, etc.) before processing to prevent undefined state errors.
+
+  **Hybrid rule + LLM design**
+
+- Deterministic keyword rules take precedence over LLM output for critical intents (confirm, cancel, reschedule), preventing uncontrolled AI-driven actions.
+
+**Queue-driven reminder scheduling (production-ready pattern)**
+
+- Appointment reminders are scheduled using a polling + job queue model:
+
+## Production Recommendations
+
+**Appointments include a computed reminder_at timestamp**
+
+- A scheduler selects due reminders
+
+- Jobs are enqueued for outbound dialing
+
+- Status transitions prevent duplicate calls
+
+- Failed jobs can be retried or routed to a dead-letter queue
+
+**Idempotent call triggering**
+
+- Reminder status is atomically updated before dialing to avoid duplicate outbound calls in distributed environments.
+
+**Session persistence & auditability**
+
+- Each call session stores transcript, detected intent, and final outcome for traceability and debugging.
+
+**Fail-safe fallback behaviour**
+
+- STT failures, malformed responses, or network issues default to controlled responses rather than silent drops.
 
 ---
 

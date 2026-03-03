@@ -63,7 +63,10 @@ export async function endSession(callSid, lastIntent = null) {
   if (error) throw error;
 }
 
-export async function getAppoint() {
+// Temporary: Fetch appointment details linked to a call session.
+// In production, appointment data will likely be sourced from the call queue or event stream.
+
+export async function getAppointData({ callSid, limit = 1 }) {
   const { data, error } = await supabase
     .from("appointments")
     .select("client_name, phone,appointment_time, status")
