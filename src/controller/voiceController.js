@@ -43,7 +43,7 @@ export const initiateCall = async (req, res) => {
 
     await confirmCallSession({ callSid, from, to });
 
-    const greeting = "Hello, may i confirm if i am speaking to Frank";
+    const greeting = "Hello, may i confirm if i am speaking to John";
 
     await addMessage(callSid, "system", "Call started");
     await addMessage(callSid, "assistant", greeting);
