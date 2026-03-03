@@ -97,7 +97,7 @@ Agent: Thanks for confirming your appointment, We look forward to seeing you tom
 Example Cancellation Flow
 
 Patient: I can't attend  
-Agent: Thank you for letting me know. I will cancel your appointment. The clinic may contact you to reschedule if needed.
+Agent: Thank you for letting me know. I will cancel your appointment. The clinic may contact you to reschedule if needed and the slot has been released and may be offered to another patient.
 
 ---
 

@@ -1,4 +1,4 @@
-# 📞 AI Voice Appointment Reminder Agent
+# AI Voice Appointment Reminder Agent
 
 > A production-shaped demonstration of a **Hybrid AI Voice Agent** built with Node.js, Twilio Voice, OpenAI (STT + LLM + TTS), and Supabase for persistence.
 
@@ -8,9 +8,7 @@
 
 Voice AI systems often fail because they give full control to the language model.
 
-Built as a **Founding Solutions Engineer** demonstration, this system emphasizes: Voice agents can be deterministic.
-
-This project proves that:
+Built as a **Founding Solutions Engineer** demonstration, this system emphasizes:
 
 - Voice agents **can** be deterministic
 - Business logic **must** live in the backend
@@ -138,7 +136,7 @@ Backend → /call/start
 
 ```bash
 git clone <repo-url>
-cd voice-agent-demo
+cd voice-agent
 npm install
 ```
 
